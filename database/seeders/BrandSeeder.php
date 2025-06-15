@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Image;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,9 +14,7 @@ class BrandSeeder extends Seeder
     public function run(): void
     {
         \App\Models\Brand::factory()->count(10)->create()->each(function ($brand) {
-            $brand->image()->create([
-                'image' => 'https://picsum.photos/seed/' . $brand->id . '/300/200',
-            ]);
+            $brand->image()->create(Image::factory()->make()->toArray());
         });
     }
 }

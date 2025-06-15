@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Image;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,9 +14,7 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         \App\Models\Category::factory()->count(10)->create()->each(function ($category) {
-                $category->image()->create([
-                    'image' => 'https://picsum.photos/seed/' . $category->id . '/300/200',
-                ]);
+                $category->image()->create(Image::factory()->make()->toArray());
             });
     }
 }
