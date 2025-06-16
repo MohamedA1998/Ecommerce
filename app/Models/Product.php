@@ -18,6 +18,11 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
     }
 
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
