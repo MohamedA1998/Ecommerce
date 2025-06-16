@@ -12,7 +12,7 @@ class OrderItemSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\OrderItem::factory()->count(50)->make()->each(function($item){
+        \App\Models\OrderItem::factory()->count(100)->make()->each(function($item){
             $item->order_id = \App\Models\Order::inRandomOrder()->first()->id;
             $item->product_id = \App\Models\Product::inRandomOrder()->first()->id;
             $item->save();
